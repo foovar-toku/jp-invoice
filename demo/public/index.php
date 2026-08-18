@@ -353,6 +353,7 @@ $result-&gt;totalTaxAmount; // <?= $correct?->totalTaxAmount ?? '' ?> (int)</cod
     <li><a href="/case-study/03-individual.pdf">個人契約（税込入力）</a> — 宛名は「様」を自動判定</li>
     <li><a href="/case-study/04-simplified-receipt.pdf">コインパーキングの領収書</a> — 適格簡易請求書。宛名なしで成立</li>
     <li><a href="/case-study/05-multipage.pdf">明細48行の請求書</a> — 自動改ページ、表見出しの再描画、ページ番号</li>
+    <li><a href="/case-study/06-credit-note.pdf">適格返還請求書</a> — 解約の日割返金。元取引年月日を記載、税率ごとの返還額</li>
   </ul>
   <p style="font-size:14px">
     <a href="mailto:<?= h($config['contact_email']) ?>?subject=jp-invoice%20%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B">
