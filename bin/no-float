@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# float 混入の検出（要件定義書 §7、付録A-2）。
+#
+# 浮動小数点を1か所でも使うと 1円のズレが出るため、src/ では以下を禁止する:
+#   - float / double の型宣言
+#   - (float) / (double) キャスト
+#   - round() / floor() / ceil() / number_format() / floatval()
+#
+# CI とローカルの両方で回す。違反があれば非ゼロ終了。
+
+set -uo pipefail
+
+cd "$(dirname "$0")/.."
+
+PATTERN='(\(float\)|\(double\)|\bfloatval\s*\(|\bnumber_format\s*\(|(^|[^a-zA-Z_>])\b(round|floor|ceil)\s*\(|:\s*\??(float|double)\b|\b(float|double)\s+\$)'
+
+# コメント行（* // # で始まる行）は対象外。禁止事項そのものを説明している箇所があるため。
+if hits=$(grep -rnE "$PATTERN" src 2>/dev/null | grep -vE '^[^:]+:[0-9]+:[[:space:]]*(\*|//|/\*|#)'); then
+  echo "float の使用を検出しました（src/ では禁止）:" >&2
+  echo "$hits" >&2
+  exit 1
+fi
+
+echo "no float usage in src/"

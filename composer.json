@@ -1,0 +1,49 @@
+{
+    "name": "foovar/jp-invoice",
+    "description": "日本の適格請求書（インボイス）制度に準拠した消費税額計算ライブラリ。端数処理は税率ごとに1回。",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "invoice",
+        "consumption-tax",
+        "japan",
+        "インボイス",
+        "適格請求書",
+        "消費税"
+    ],
+    "require": {
+        "php": ">=8.2",
+        "ext-bcmath": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5",
+        "phpstan/phpstan": "^2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Foovar\\JpInvoice\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Foovar\\JpInvoice\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "phpunit",
+        "analyse": "phpstan analyse"
+    },
+    "homepage": "https://invoice.pij.systems/",
+    "authors": [
+        {
+            "name": "Foovar"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/foovar-toku/jp-invoice/issues",
+        "source": "https://github.com/foovar-toku/jp-invoice"
+    }
+}

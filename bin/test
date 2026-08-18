@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# 全サポートバージョンでテストを回す。
+#   bin/test          … 8.2 / 8.3 / 8.4 すべて
+#   bin/test 8.4      … 指定バージョンのみ
+#
+# workdev には PHP が入っていないので Docker で実行する（HANDOFF.md 参照）。
+
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+VERSIONS=("${@:-8.2 8.3 8.4}")
+read -r -a VERSIONS <<< "${VERSIONS[*]}"
+
+for v in "${VERSIONS[@]}"; do
+  printf '\n\033[1;36m== PHP %s ==\033[0m\n' "$v"
+  docker build -q --build-arg "PHP_VERSION=$v" -t "jp-invoice:$v" . >/dev/null
+  # vendor/ が root 所有で作られないよう、ホストのユーザで実行する
+  docker run --rm -v "$PWD":/app -w /app \
+    -u "$(id -u):$(id -g)" -e COMPOSER_HOME=/tmp/composer \
+    "jp-invoice:$v" \
+    sh -c 'composer install --no-interaction --quiet && vendor/bin/phpunit'
+done
+
+printf '\n\033[1;32mall versions passed\033[0m\n'

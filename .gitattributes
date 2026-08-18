@@ -1,0 +1,13 @@
+# Packagist の dist アーカイブに開発用ファイルを含めない
+/tests           export-ignore
+/demo            export-ignore
+/examples        export-ignore
+/docs            export-ignore
+/bin             export-ignore
+/.github         export-ignore
+/Dockerfile      export-ignore
+/phpunit.xml.dist export-ignore
+/phpstan.neon.dist export-ignore
+/.gitattributes  export-ignore
+/HANDOFF.md      export-ignore
+/work-log-*.md   export-ignore
