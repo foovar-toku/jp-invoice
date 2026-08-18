@@ -1,11 +1,17 @@
 # jp-invoice
 
+[![CI](https://github.com/foovar-toku/jp-invoice/actions/workflows/ci.yml/badge.svg)](https://github.com/foovar-toku/jp-invoice/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![PHP](https://img.shields.io/badge/php-8.2%20%7C%208.3%20%7C%208.4-777bb4.svg)](composer.json)
+
 日本の**適格請求書等保存方式（インボイス制度）**に準拠した消費税額計算ライブラリ。
 
 端数処理を「**一の適格請求書につき、税率ごとに1回**」で行います（消令70の10、基通1-8-15）。
 明細行ごとに丸めてしまう実装ミスを、構造的に起こせないようにするのが目的です。
 
 [English](#english) | MIT License | PHP 8.2+ / 依存パッケージなし（`ext-bcmath` のみ）
+
+**▶ ブラウザで試す: https://invoice.pij.systems/** — 行ごとに丸めた場合との差が並んで出ます
 
 ---
 

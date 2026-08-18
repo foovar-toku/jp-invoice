@@ -13,7 +13,7 @@ return [
     'contact_email' => 'info@pijtokyo.jp',
 
     // GitHub リポジトリ URL。null の間はリンクを出さない
-    'github_url' => null,
+    'github_url' => 'https://github.com/foovar-toku/jp-invoice',
 
     // Packagist で公開済みか。true になったら composer require の案内を出す
     'published_on_packagist' => false,
