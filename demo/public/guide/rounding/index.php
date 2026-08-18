@@ -87,7 +87,11 @@ $result-&gt;totalTaxAmount;   // 31（行ごとに丸めた 30 ではない）</
   <a href="https://github.com/foovar-toku/jp-invoice">GitHub</a></p>
 </div>
 
-<p class="related">関連: <a href="/guide/required-fields/">適格請求書の記載事項6項目</a>／
-<a href="/guide/credit-note/">返還インボイスと1万円未満の免除</a></p>
+<p class="related">
+  この論点を実装者向けにまとめた記事もあります:
+  <a href="https://zenn.dev/foovar/articles/a2a1ddb4ef73f1">PHPでインボイスの消費税を計算したら1円ズレる</a>（Zenn）<br>
+  関連: <a href="/guide/required-fields/">適格請求書の記載事項6項目</a>／
+  <a href="/guide/credit-note/">返還インボイスと1万円未満の免除</a>
+</p>
 </article>
 <?php page_foot(); ?>

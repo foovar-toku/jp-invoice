@@ -26,6 +26,14 @@ page_head(
   </ul>
 </section>
 
+<section>
+  <h2>技術記事</h2>
+  <p style="font-size:14px">
+    <a href="https://zenn.dev/foovar/articles/a2a1ddb4ef73f1">PHPでインボイスの消費税を計算したら1円ズレる — 端数処理は「税率ごとに1回」</a>（Zenn）<br>
+    <span style="color:var(--muted)">実装でつまずいた点をまとめたものです。コード例つき。</span>
+  </p>
+</section>
+
 <div class="cta">
   <p><strong>計算部分は PHP ライブラリとして無料公開しています。</strong></p>
   <p style="font-size:14px">

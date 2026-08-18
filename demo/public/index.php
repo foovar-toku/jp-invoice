@@ -267,6 +267,8 @@ $result = $invoice-&gt;calculate();
 $result-&gt;totalTaxAmount; // <?= $correct?->totalTaxAmount ?? '' ?> (int)</code></pre>
   <p style="font-size:14px">
     PHP 8.2+ / 依存パッケージなし / MIT。金額は numeric-string と整数だけで扱い、float は一切使いません。
+    <a href="https://zenn.dev/foovar/articles/a2a1ddb4ef73f1">解説記事（Zenn）</a>
+    ／ <a href="/guide/">実装ガイド</a>
 <?php if ($config['github_url'] !== null): ?>
     <a href="<?= h($config['github_url']) ?>">ソースコード（GitHub）</a>
 <?php endif; ?>

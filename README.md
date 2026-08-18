@@ -14,6 +14,7 @@
 [English](#english) | MIT License | PHP 8.2+ / 依存パッケージなし（`ext-bcmath` のみ）
 
 **▶ ブラウザで試す: https://invoice.pij.systems/** — 行ごとに丸めた場合との差が並んで出ます
+**▶ 解説記事: [PHPでインボイスの消費税を計算したら1円ズレる](https://zenn.dev/foovar/articles/a2a1ddb4ef73f1)**（Zenn）
 
 ---
 
