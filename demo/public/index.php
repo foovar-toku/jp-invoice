@@ -341,6 +341,19 @@ $result-&gt;totalTaxAmount; // <?= $correct?->totalTaxAmount ?? '' ?> (int)</cod
       A4縦・日本様式。税率別内訳、軽減税率の注記、角印、振込先まで入った実物です。
     </span>
   </p>
+
+  <h3 style="font-size:15px;margin:20px 0 8px">導入事例: 駐車場運営会社の請求書一式</h3>
+  <p style="font-size:14px;color:var(--muted)">
+    月極（適格請求書）とコインパーキング（適格簡易請求書）が同居する駐車場業を想定して、
+    実運用に近いデータで出力したものです。すべて同じコードから生成しています。
+  </p>
+  <ul style="font-size:14px;line-height:2">
+    <li><a href="/case-study/01-corporate.pdf">法人の月極契約</a> — 複数区画＋管理費。宛名は「御中」を自動判定</li>
+    <li><a href="/case-study/02-reduced-rate.pdf">軽減税率が混在する請求</a> — 8%対象に ※ と脚注、税率ごとの内訳</li>
+    <li><a href="/case-study/03-individual.pdf">個人契約（税込入力）</a> — 宛名は「様」を自動判定</li>
+    <li><a href="/case-study/04-simplified-receipt.pdf">コインパーキングの領収書</a> — 適格簡易請求書。宛名なしで成立</li>
+    <li><a href="/case-study/05-multipage.pdf">明細48行の請求書</a> — 自動改ページ、表見出しの再描画、ページ番号</li>
+  </ul>
   <p style="font-size:14px">
     <a href="mailto:<?= h($config['contact_email']) ?>?subject=jp-invoice%20%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B">
       <?= h($config['contact_email']) ?> までお問い合わせください
