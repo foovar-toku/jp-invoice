@@ -1,6 +1,8 @@
 # jp-invoice
 
 [![CI](https://github.com/foovar-toku/jp-invoice/actions/workflows/ci.yml/badge.svg)](https://github.com/foovar-toku/jp-invoice/actions/workflows/ci.yml)
+[![Latest Version](https://img.shields.io/packagist/v/foovar/jp-invoice.svg)](https://packagist.org/packages/foovar/jp-invoice)
+[![Downloads](https://img.shields.io/packagist/dt/foovar/jp-invoice.svg)](https://packagist.org/packages/foovar/jp-invoice)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![PHP](https://img.shields.io/badge/php-8.2%20%7C%208.3%20%7C%208.4-777bb4.svg)](composer.json)
 

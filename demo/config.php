@@ -16,5 +16,5 @@ return [
     'github_url' => 'https://github.com/foovar-toku/jp-invoice',
 
     // Packagist で公開済みか。true になったら composer require の案内を出す
-    'published_on_packagist' => false,
+    'published_on_packagist' => true,
 ];
