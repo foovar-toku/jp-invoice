@@ -336,6 +336,12 @@ $result-&gt;totalTaxAmount; // <?= $correct?->totalTaxAmount ?? '' ?> (int)</cod
     <li><strong>業種別テンプレート集</strong> — 駐車場業（簡易インボイス）、コールセンター、保守契約 ほか</li>
   </ul>
   <p style="font-size:14px">
+    <a href="/sample-invoice.pdf">▶ 帳票 PDF の見本を見る（PDF）</a><br>
+    <span style="color:var(--muted);font-size:13px">
+      A4縦・日本様式。税率別内訳、軽減税率の注記、角印、振込先まで入った実物です。
+    </span>
+  </p>
+  <p style="font-size:14px">
     <a href="mailto:<?= h($config['contact_email']) ?>?subject=jp-invoice%20%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B">
       <?= h($config['contact_email']) ?> までお問い合わせください
     </a>
