@@ -69,7 +69,7 @@ $result = $invoice-&gt;calculate();</code></pre>
   <p><strong>記載事項の充足検証つきの計算ライブラリ</strong>（MIT・無料）</p>
   <p style="font-size:14px"><code>composer require foovar/jp-invoice</code> —
   <a href="https://github.com/foovar-toku/jp-invoice">GitHub</a> ／
-  <a href="/">デモ</a> ／ PDF 帳票の<a href="/#">見本</a>もあります</p>
+  <a href="/">デモ</a> ／ <a href="/sample-invoice.pdf">PDF 帳票の見本</a>もあります</p>
 </div>
 
 <p class="related">関連: <a href="/guide/rounding/">端数処理は税率ごとに1回</a>／
