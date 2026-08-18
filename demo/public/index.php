@@ -95,67 +95,16 @@ try {
 
 $difference = $correct === null ? 0 : $correct->totalTaxAmount - $perLineTax;
 
-function h(string $value): string
-{
-    return htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-}
 ?>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>jp-invoice デモ — インボイスの端数処理は税率ごとに1回</title>
-<meta name="description" content="適格請求書の消費税額を、行ごとに丸めた場合と税率ごとに1回丸めた場合で比較できるデモです。">
-<style>
-  :root {
-    --bg:#f7f7f5; --panel:#fff; --fg:#1c1c1a; --muted:#6b6b66; --line:#e2e2dd;
-    --accent:#b45309; --ok:#166534; --ng:#b91c1c; --code:#f3f3f0;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg:#16161a; --panel:#1e1e23; --fg:#eceae5; --muted:#9a978f; --line:#2e2e35;
-      --accent:#e8a33d; --ok:#4ade80; --ng:#f87171; --code:#26262c;
-    }
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--fg);line-height:1.8;
-       font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",Meiryo,sans-serif}
-  .wrap{max-width:860px;margin:0 auto;padding:32px 20px 64px}
-  header{margin-bottom:28px}
-  h1{font-size:24px;margin:0 0 8px;letter-spacing:.02em}
-  .lead{color:var(--muted);margin:0;font-size:15px}
-  section{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px;margin-bottom:20px}
-  h2{font-size:17px;margin:0 0 16px}
-  table{width:100%;border-collapse:collapse;font-size:14px}
-  th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left}
-  th{color:var(--muted);font-weight:600;font-size:13px}
-  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
-  input[type=text]{width:100%;padding:6px 8px;border:1px solid var(--line);border-radius:6px;
-                   background:var(--bg);color:var(--fg);font-size:14px}
-  select{padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);font-size:14px}
-  button{margin-top:16px;padding:9px 22px;border:0;border-radius:8px;background:var(--accent);
-         color:#fff;font-size:15px;font-weight:600;cursor:pointer}
-  .opts{display:flex;gap:20px;flex-wrap:wrap;margin-top:16px;font-size:14px}
-  .verdict{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:18px}
-  .card{flex:1 1 240px;border:1px solid var(--line);border-radius:10px;padding:16px}
-  .card .amount{font-size:30px;font-variant-numeric:tabular-nums;margin:4px 0}
-  .card.bad{border-color:var(--ng)} .card.bad .amount{color:var(--ng)}
-  .card.good{border-color:var(--ok)} .card.good .amount{color:var(--ok)}
-  .tag{font-size:12px;color:var(--muted)}
-  .diff{font-size:15px;padding:12px 14px;border-radius:8px;background:var(--code)}
-  pre{background:var(--code);padding:14px;border-radius:8px;overflow-x:auto;font-size:13px;line-height:1.6}
-  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-  blockquote{margin:0;padding:10px 14px;border-left:3px solid var(--accent);color:var(--muted);font-size:14px}
-  .err{color:var(--ng);font-size:14px}
-  footer{color:var(--muted);font-size:13px;margin-top:32px}
-  a{color:var(--accent)}
-  .scroll{overflow-x:auto}
-</style>
-</head>
-<body>
-<div class="wrap">
+<?php
+require dirname(__DIR__) . '/layout.php';
 
+page_head(
+    title: 'インボイスの端数処理は税率ごとに1回 — jp-invoice デモ',
+    description: '適格請求書の消費税額を、行ごとに丸めた場合と税率ごとに1回丸めた場合で比較できるデモです。国税庁Q&A 問57 の根拠つき。PHP ライブラリ（MIT）も公開しています。',
+    path: '/',
+);
+?>
 <header>
   <h1>インボイスの端数処理は「税率ごとに1回」</h1>
   <p class="lead">同じ明細でも、丸める場所を間違えると消費税額がズレます。実際に入力して確かめてください。</p>
@@ -371,5 +320,4 @@ $result-&gt;totalTaxAmount; // <?= $correct?->totalTaxAmount ?? '' ?> (int)</cod
 </footer>
 
 </div>
-</body>
-</html>
+<?php page_foot(); ?>
