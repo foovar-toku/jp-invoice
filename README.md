@@ -14,7 +14,7 @@
 [English](#english) | MIT License | PHP 8.2+ / 依存パッケージなし（`ext-bcmath` のみ）
 
 **▶ ブラウザで試す: https://invoice.pij.systems/** — 行ごとに丸めた場合との差が並んで出ます
-**▶ 解説記事: [PHPでインボイスの消費税を計算したら1円ズレる](https://zenn.dev/foovar/articles/a2a1ddb4ef73f1)**（Zenn）
+**▶ 解説記事: PHPでインボイスの消費税を計算したら1円ズレる**（[Zenn](https://zenn.dev/foovar/articles/a2a1ddb4ef73f1) / [Qiita](https://qiita.com/foovar/items/732af8e33c6292894e39)）
 
 ---
 
@@ -207,6 +207,12 @@ TransitionalMeasure::SCHEDULE_VERSION; // '2026-08-17'（このテーブルが�
 
 本ライブラリは消費税額の計算を補助するものです。個別の取引における税務上の取扱いについては、
 **税理士等の専門家にご確認ください**。制度改正への追随は利用者の責任において行ってください。
+
+## 関連記事・ツール
+
+- PHPでインボイスの消費税を計算したら1円ズレる — 端数処理は「税率ごとに1回」（[Zenn](https://zenn.dev/foovar/articles/a2a1ddb4ef73f1) / [Qiita](https://qiita.com/foovar/items/732af8e33c6292894e39)）
+- [インボイス制度の実装ガイド](https://invoice.pij.systems/guide/) — 端数処理／記載事項6項目／返還インボイス／経過措置
+- [登録番号チェッカー](https://invoice.pij.systems/tools/registration-number/) — `T`+13桁の形式と法人番号チェックディジットを計算過程つきで確認
 
 ## 参考資料
 
