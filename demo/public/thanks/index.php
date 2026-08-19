@@ -24,12 +24,20 @@ page_head(
 <section>
   <h2>1. 公開鍵をお送りください</h2>
   <p>パッケージは Composer 経由でお渡しします。配布用リポジトリへの読み取り専用アクセスを
-  発行しますので、<strong>SSH の公開鍵</strong>を下記までお送りください。</p>
-  <pre><code># 鍵が無い場合はデプロイ用に新しく作成してください
+  発行しますので、<strong>この用途専用に作成した SSH 公開鍵</strong>を下記までお送りください。</p>
+  <pre><code># 必ず新しく作成してください（既存の鍵は使えません。理由は下記）
 ssh-keygen -t ed25519 -C "jp-invoice-pdf" -f ~/.ssh/jp_invoice_pdf
 cat ~/.ssh/jp_invoice_pdf.pub   # ← この内容をお送りください</code></pre>
   <p>送付先: <strong><?= h($company['email']) ?></strong>（件名に「jp-invoice-pdf 公開鍵」とご記入ください）</p>
-  <p style="font-size:14px;color:var(--muted)">秘密鍵は絶対に送らないでください。必要なのは <code>.pub</code> の方だけです。</p>
+
+  <p style="font-size:14px;color:var(--muted)">
+    <strong>既存の鍵が使えない理由</strong>: GitHub では、同じ公開鍵を複数のリポジトリのデプロイキーとして
+    登録できません。すでに GitHub アカウントに登録済みの鍵をお送りいただくと、こちらで登録できず
+    やり直しになります。<br>
+    <strong>秘密鍵（<code>.pub</code> が付かない方）は絶対に送らないでください。</strong>
+    公開鍵は公開される前提のものなので、送付いただいても差し支えありません。<br>
+    コメント（<code>-C</code> の値）には社内のホスト名やメールアドレスを含めない形にしてあります。
+  </p>
 </section>
 
 <section>
