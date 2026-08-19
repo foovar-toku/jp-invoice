@@ -277,20 +277,20 @@ $result-&gt;totalTaxAmount; // <?= $correct?->totalTaxAmount ?? '' ?> (int)</cod
 
 <?php if ($config['contact_email'] !== null): ?>
 <section>
-  <h2>帳票 PDF・Laravel 統合・業種別テンプレート</h2>
+  <h2>帳票 PDF 生成パッケージ（商用）</h2>
   <p style="font-size:14px">
-    計算コアは MIT で無料公開しています。その上に載せる次のものは商用で提供しています。
+    計算コアは MIT で無料公開しています。その上に載せる帳票 PDF の生成は商用で提供しています。
   </p>
   <ul style="font-size:14px">
-    <li><strong>帳票 PDF 生成</strong> — A4縦の日本様式、税率別内訳表、角印埋め込み、御中／様の自動判定</li>
-    <li><strong>Laravel 統合</strong> — Service Provider、Blade コンポーネント、マイグレーション雛形</li>
-    <li><strong>業種別テンプレート集</strong> — 駐車場業（簡易インボイス）、コールセンター、保守契約 ほか</li>
+    <li>A4縦の日本様式。<strong>記載事項6項目</strong>をレイアウトに織り込み済み</li>
+    <li>税率ごとの内訳表、軽減税率の注記、ロゴ・角印、振込先、自動改ページ</li>
+    <li><strong>適格返還請求書</strong>にも対応（元取引年月日の記載、返還額の内訳）</li>
+    <li>日本語フォントを埋め込み。環境依存で文字が消えない</li>
   </ul>
+
   <p style="font-size:14px">
-    <a href="/sample-invoice.pdf">▶ 帳票 PDF の見本を見る（PDF）</a><br>
-    <span style="color:var(--muted);font-size:13px">
-      A4縦・日本様式。税率別内訳、軽減税率の注記、角印、振込先まで入った実物です。
-    </span>
+    <a href="/sample-invoice.pdf">▶ 出力見本（PDF）</a>
+    ／ 下記の導入事例もご覧いただけます
   </p>
 
   <h3 style="font-size:15px;margin:20px 0 8px">導入事例: 駐車場運営会社の請求書一式</h3>
@@ -304,11 +304,49 @@ $result-&gt;totalTaxAmount; // <?= $correct?->totalTaxAmount ?? '' ?> (int)</cod
     <li><a href="/case-study/03-individual.pdf">個人契約（税込入力）</a> — 宛名は「様」を自動判定</li>
     <li><a href="/case-study/04-simplified-receipt.pdf">コインパーキングの領収書</a> — 適格簡易請求書。宛名なしで成立</li>
     <li><a href="/case-study/05-multipage.pdf">明細48行の請求書</a> — 自動改ページ、表見出しの再描画、ページ番号</li>
-    <li><a href="/case-study/06-credit-note.pdf">適格返還請求書</a> — 解約の日割返金。元取引年月日を記載、税率ごとの返還額</li>
+    <li><a href="/case-study/06-credit-note.pdf">適格返還請求書</a> — 解約の日割返金。元取引年月日を記載</li>
   </ul>
+
+<?php
+    /** @var array<string, array{label: string, price: ?int, url: ?string, note: string}> $links */
+    $links = $config['payment_links'];
+    $buyable = array_filter($links, static fn (array $l): bool => $l['url'] !== null && $l['price'] !== null);
+?>
+<?php if ($buyable !== []): ?>
+  <h3 style="font-size:15px;margin:24px 0 10px">ご購入</h3>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>プラン</th><th class="num">価格（税込）</th><th></th></tr></thead>
+    <tbody>
+    <?php foreach ($buyable as $link): ?>
+      <tr>
+        <td><?= h($link['label']) ?><br>
+          <span style="color:var(--muted);font-size:13px"><?= h($link['note']) ?></span></td>
+        <td class="num"><?= number_format((int) $link['price']) ?> 円</td>
+        <td><a href="<?= h((string) $link['url']) ?>"
+               style="display:inline-block;padding:7px 16px;background:var(--accent);color:#fff;border-radius:6px;text-decoration:none">購入する</a></td>
+      </tr>
+    <?php endforeach; ?>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:13px;color:var(--muted);margin-top:10px">
+    決済は Stripe で行われます。決済後、<strong>3営業日以内</strong>に受け取り方法をメールでご案内します。
+    お支払いに対する適格請求書（登録番号 <?= h($config['company']['registration_number']) ?>）を PDF でお送りします。
+    <a href="/legal/">特定商取引法に基づく表記</a>
+  </p>
+<?php endif; ?>
+
+  <h3 style="font-size:15px;margin:22px 0 8px">開発中</h3>
+  <p style="font-size:14px;color:var(--muted)">
+    Laravel 統合（Service Provider・Blade コンポーネント）と業種別テンプレート集は開発中です。
+    ご要望があればお知らせください。優先順位の判断材料にします。
+  </p>
+
   <p style="font-size:14px">
-    <a href="mailto:<?= h($config['contact_email']) ?>?subject=jp-invoice%20%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B">
-      <?= h($config['contact_email']) ?> までお問い合わせください
+    お問い合わせ・お見積り:
+    <a href="mailto:<?= h($config['contact_email']) ?>?subject=jp-invoice-pdf%20%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">
+      <?= h($config['contact_email']) ?>
     </a>
   </p>
 </section>

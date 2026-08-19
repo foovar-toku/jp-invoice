@@ -22,7 +22,7 @@ if (!function_exists('h')) {
  * @param string $path      サイト内の絶対パス（canonical と OGP に使う）
  * @param bool   $isArticle 解説記事なら true（構造化データの型が変わる）
  */
-function page_head(string $title, string $description, string $path, bool $isArticle = false): void
+function page_head(string $title, string $description, string $path, bool $isArticle = false, bool $noindex = false): void
 {
     $canonical = SITE_ORIGIN . $path;
     $ogImage = SITE_ORIGIN . '/ogp.png';
@@ -60,6 +60,8 @@ function page_head(string $title, string $description, string $path, bool $isArt
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= h($title) ?></title>
 <meta name="description" content="<?= h($description) ?>">
+<?php if ($noindex): ?><meta name="robots" content="noindex, nofollow">
+<?php endif; ?>
 <link rel="canonical" href="<?= h($canonical) ?>">
 <meta property="og:type" content="<?= $isArticle ? 'article' : 'website' ?>">
 <meta property="og:site_name" content="<?= h(SITE_NAME) ?>">
@@ -97,7 +99,8 @@ function page_foot(): void
     本サイトは消費税額の計算を体験するための資料です。個別の取引における税務上の取扱いについては、
     税理士等の専門家にご確認ください。制度の内容は国税庁の公表資料に基づいていますが、
     最新の情報は必ず一次情報でご確認ください。<br>
-    運営: ピー・アイ・ジェイ株式会社 ／ お問い合わせ: info@pijtokyo.jp
+    運営: ピー・アイ・ジェイ株式会社 ／ お問い合わせ: info@pijtokyo.jp ／
+    <a href="/legal/">特定商取引法に基づく表記</a>
   </p>
 </footer>
 </div>
