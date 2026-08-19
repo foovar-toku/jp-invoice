@@ -39,7 +39,8 @@ page_head(
 <section>
   <h2>技術記事</h2>
   <p style="font-size:14px">
-    <a href="https://zenn.dev/foovar/articles/a2a1ddb4ef73f1">PHPでインボイスの消費税を計算したら1円ズレる — 端数処理は「税率ごとに1回」</a>（Zenn）<br>
+    <a href="https://zenn.dev/foovar/articles/a2a1ddb4ef73f1">PHPでインボイスの消費税を計算したら1円ズレる — 端数処理は「税率ごとに1回」</a>
+    （<a href="https://zenn.dev/foovar/articles/a2a1ddb4ef73f1">Zenn</a> / <a href="https://qiita.com/foovar/items/732af8e33c6292894e39">Qiita</a>）<br>
     <span style="color:var(--muted)">実装でつまずいた点をまとめたものです。コード例つき。</span>
   </p>
 </section>
