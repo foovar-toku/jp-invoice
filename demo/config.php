@@ -38,20 +38,20 @@ return [
     'payment_links' => [
         'license' => [
             'label' => '帳票 PDF パッケージ（買い切り）',
-            'price' => null,
-            'url' => null,
+            'price' => 49500,
+            'url' => 'https://buy.stripe.com/3cI14n5vx37Wgn21SwdfG02',
             'note' => '1社1プロダクトへの組み込み。台数制限なし。初年度のアップデート受領権を含む',
         ],
         'renewal' => [
             'label' => 'アップデート受領権の更新（2年目以降・年額）',
-            'price' => null,
-            'url' => null,
+            'price' => 24750,
+            'url' => 'https://buy.stripe.com/cNidR92jl23SeeUfJmdfG01',
             'note' => '制度改正への追随とメールサポート。更新しなくても購入時点のバージョンは永続利用できる',
         ],
         'onboarding' => [
             'label' => '導入支援（組み込み実装）',
-            'price' => null,
-            'url' => null,
+            'price' => 165000,
+            'url' => 'https://buy.stripe.com/eVq7sLaPR0ZO9YEdBedfG00',
             'note' => '既存システムへの組み込みを実装します。内容により個別見積',
         ],
     ],
