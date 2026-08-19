@@ -72,6 +72,8 @@ function page_head(string $title, string $description, string $path, bool $isArt
 <meta name="twitter:title" content="<?= h($title) ?>">
 <meta name="twitter:description" content="<?= h($description) ?>">
 <meta name="twitter:image" content="<?= h($ogImage) ?>">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="/style.css">
 <script type="application/ld+json"><?= json_encode($jsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?></script>
 </head>
