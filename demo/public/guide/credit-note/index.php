@@ -77,7 +77,7 @@ $note-&gt;taxIncludedTotal();   // 440</code></pre>
   <p><strong>返還インボイスの判定と計算に対応</strong>（MIT・無料）</p>
   <p style="font-size:14px"><code>composer require foovar/jp-invoice</code> —
   <a href="https://github.com/foovar-toku/jp-invoice">GitHub</a>／
-  PDF 帳票の見本は <a href="/">トップページ</a>の導入事例にあります</p>
+  PDF 帳票の出力サンプルは <a href="/">トップページ</a>にあります</p>
 </div>
 
 <p class="related">関連: <a href="/guide/rounding/">端数処理は税率ごとに1回</a>／

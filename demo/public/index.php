@@ -290,13 +290,14 @@ $result-&gt;totalTaxAmount; // <?= $correct?->totalTaxAmount ?? '' ?> (int)</cod
 
   <p style="font-size:14px">
     <a href="/sample-invoice.pdf">▶ 出力見本（PDF）</a>
-    ／ 下記の導入事例もご覧いただけます
+    ／ 下記の業種別サンプルもご覧いただけます
   </p>
 
-  <h3 style="font-size:15px;margin:20px 0 8px">導入事例: 駐車場運営会社の請求書一式</h3>
+  <h3 style="font-size:15px;margin:20px 0 8px">出力サンプル: 駐車場業（架空の事業者を想定）</h3>
   <p style="font-size:14px;color:var(--muted)">
-    月極（適格請求書）とコインパーキング（適格簡易請求書）が同居する駐車場業を想定して、
-    実運用に近いデータで出力したものです。すべて同じコードから生成しています。
+    <strong>架空の事業者</strong>「株式会社パーキングPIJ」を想定して出力したサンプルです（実在の導入先ではありません）。
+    月極（適格請求書）とコインパーキング（適格簡易請求書）が同居する業態を選び、実運用に近いデータで作成しました。
+    すべて同じコードから生成しています。
   </p>
   <ul style="font-size:14px;line-height:2">
     <li><a href="/case-study/01-corporate.pdf">法人の月極契約</a> — 複数区画＋管理費。宛名は「御中」を自動判定</li>
@@ -311,6 +312,21 @@ $result-&gt;totalTaxAmount; // <?= $correct?->totalTaxAmount ?? '' ?> (int)</cod
     /** @var array<string, array{label: string, price: ?int, url: ?string, note: string}> $links */
     $links = $config['payment_links'];
     $buyable = array_filter($links, static fn (array $l): bool => $l['url'] !== null && $l['price'] !== null);
+
+    /**
+     * 表示価格の内訳を、このライブラリ自身で計算する。
+     * インボイス対応を謳う商品の価格表なので、税額内訳を自前で出す。
+     */
+    $breakdown = static function (int $taxIncluded) use ($config): array {
+        $invoice = new Invoice(
+            new Issuer($config['company']['name'], $config['company']['registration_number'], RoundingMode::FLOOR),
+            priceMode: PriceMode::TAX_INCLUDED,
+        );
+        $invoice->addLine(new LineItem('ライセンス', '1', (string) $taxIncluded, TaxRate::STANDARD_10));
+        $summary = $invoice->calculate()->summaryFor(TaxRate::STANDARD_10);
+
+        return [$summary?->taxableBase ?? 0, $summary?->taxAmount ?? 0];
+    };
 ?>
 <?php if ($buyable !== []): ?>
   <h3 style="font-size:15px;margin:24px 0 10px">ご購入</h3>
@@ -319,10 +335,14 @@ $result-&gt;totalTaxAmount; // <?= $correct?->totalTaxAmount ?? '' ?> (int)</cod
     <thead><tr><th>プラン</th><th class="num">価格（税込）</th><th></th></tr></thead>
     <tbody>
     <?php foreach ($buyable as $link): ?>
+      <?php [$base, $tax] = $breakdown((int) $link['price']); ?>
       <tr>
         <td><?= h($link['label']) ?><br>
           <span style="color:var(--muted);font-size:13px"><?= h($link['note']) ?></span></td>
-        <td class="num"><?= number_format((int) $link['price']) ?> 円</td>
+        <td class="num"><?= number_format((int) $link['price']) ?> 円<br>
+          <span style="color:var(--muted);font-size:12px;font-weight:normal">
+            税抜 <?= number_format($base) ?> 円 ／ 消費税 <?= number_format($tax) ?> 円
+          </span></td>
         <td><a href="<?= h((string) $link['url']) ?>"
                style="display:inline-block;padding:7px 16px;background:var(--accent);color:#fff;border-radius:6px;text-decoration:none">購入する</a></td>
       </tr>
@@ -331,7 +351,12 @@ $result-&gt;totalTaxAmount; // <?= $correct?->totalTaxAmount ?? '' ?> (int)</cod
   </table>
   </div>
   <p style="font-size:13px;color:var(--muted);margin-top:10px">
-    決済は Stripe で行われます。決済後、<strong>3営業日以内</strong>に受け取り方法をメールでご案内します。
+    ご購入前に<strong><a href="/license/">利用許諾の内容</a></strong>をご確認ください
+    （再配布・改変の可否、アップデートの範囲、第三者ソフトウェアの扱い）。<br>
+    決済は Stripe で行われます。<strong>受け取り手順は決済完了後の画面で即時にご確認いただけます</strong>
+    （アクセス発行は営業時間内なら通常数時間以内）。<br>
+    <strong>銀行振込をご希望の場合は <a href="mailto:<?= h($config['contact_email']) ?>?subject=jp-invoice-pdf%20%E9%8A%80%E8%A1%8C%E6%8C%AF%E8%BE%BC%E5%B8%8C%E6%9C%9B"><?= h($config['contact_email']) ?></a> までご連絡ください。</strong>
+    適格請求書を発行し、お振込先をご案内します。
     お支払いに対する適格請求書（登録番号 <?= h($config['company']['registration_number']) ?>）を PDF でお送りします。
     <a href="/legal/">特定商取引法に基づく表記</a>
   </p>

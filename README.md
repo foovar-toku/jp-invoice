@@ -193,7 +193,7 @@ TransitionalMeasure::SCHEDULE_VERSION; // '2026-08-17'（このテーブルが�
 | Laravel 統合 | Service Provider、Blade コンポーネント、マイグレーション雛形（開発中） |
 | 業種別テンプレート集 | 駐車場業（簡易インボイス）、コールセンター、保守契約 ほか（開発中） |
 
-**出力見本と導入事例**: <https://invoice.pij.systems/>（ページ下部）
+**出力サンプル**: <https://invoice.pij.systems/>（ページ下部・架空の事業者を想定した業種別サンプル）
 お問い合わせ: info@pijtokyo.jp
 
 ## 開発

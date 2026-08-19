@@ -7,5 +7,6 @@
   <url><loc>https://invoice.pij.systems/guide/required-fields/</loc><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://invoice.pij.systems/guide/credit-note/</loc><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://invoice.pij.systems/guide/transitional/</loc><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://invoice.pij.systems/license/</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
   <url><loc>https://invoice.pij.systems/legal/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>
