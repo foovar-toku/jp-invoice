@@ -27,6 +27,16 @@ page_head(
 </section>
 
 <section>
+  <h2>ツール</h2>
+  <p style="font-size:14px">
+    <a href="/tools/registration-number/"><strong>登録番号チェッカー</strong></a> —
+    <code>T</code>+13桁の形式と、法人番号のチェックディジットを計算過程つきで確認します<br>
+    <a href="/"><strong>端数処理の比較</strong></a> —
+    明細を入れて「行ごとに丸めた場合」と「税率ごとに1回」の差を見ます
+  </p>
+</section>
+
+<section>
   <h2>技術記事</h2>
   <p style="font-size:14px">
     <a href="https://zenn.dev/foovar/articles/a2a1ddb4ef73f1">PHPでインボイスの消費税を計算したら1円ズレる — 端数処理は「税率ごとに1回」</a>（Zenn）<br>

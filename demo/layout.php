@@ -82,6 +82,7 @@ function page_head(string $title, string $description, string $path, bool $isArt
 <nav class="site">
   <a href="/">デモで試す</a>
   <a href="/guide/">解説</a>
+  <a href="/tools/registration-number/">登録番号チェッカー</a>
   <a href="https://github.com/foovar-toku/jp-invoice">GitHub</a>
   <a href="https://packagist.org/packages/foovar/jp-invoice">Packagist</a>
 </nav>

@@ -21,7 +21,7 @@ page_head(
   <table>
     <thead><tr><th>#</th><th>記載事項</th><th>実装上の注意</th></tr></thead>
     <tbody>
-      <tr><td>1</td><td>発行事業者の氏名又は名称 <strong>及び登録番号</strong></td><td>登録番号は <code>T</code> + 13桁。これが無いと区分記載請求書等として扱われる</td></tr>
+      <tr><td>1</td><td>発行事業者の氏名又は名称 <strong>及び登録番号</strong></td><td>登録番号は <code>T</code> + 13桁。これが無いと区分記載請求書等として扱われる（<a href="/tools/registration-number/">チェッカー</a>）</td></tr>
       <tr><td>2</td><td>課税資産の譲渡等を行った<strong>年月日</strong></td><td><strong>発行日ではない</strong>。両方載せるなら別項目として印字する</td></tr>
       <tr><td>3</td><td>取引内容（<strong>軽減税率対象である旨</strong>）</td><td>※印＋脚注が一般的。品名だけでは足りない</td></tr>
       <tr><td>4</td><td>税率ごとに区分して合計した対価の額 <strong>及び適用税率</strong></td><td>税抜・税込どちらでもよい。10%と8%を分けて出す</td></tr>
